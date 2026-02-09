@@ -10,8 +10,8 @@ knowledge-base-index
 - client (Edm.String, filterable)
 - category (Edm.String, filterable)
 - title (Edm.String, searchable)
-- source_document (Edm.String)
-- chunk_id (Edm.Int32)
+- source_file (Edm.String)
+- chunk_index (Edm.Int32)
 - embedding (Collection(Edm.Single))
 
 ## Chunking Strategy
