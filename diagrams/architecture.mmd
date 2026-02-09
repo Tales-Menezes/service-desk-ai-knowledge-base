@@ -1,0 +1,11 @@
+flowchart LR
+    User[Service Desk Engineer]
+    User -->|Login| AzureAD[Azure AD]
+
+    User -->|Query| Flask[Flask Web App]
+    Flask --> Search[Azure Cognitive Search]
+    Search --> Flask
+
+    Flask --> OpenAI[Azure OpenAI]
+    Flask --> DB[(Azure SQL Database)]
+    Flask --> Blob[Azure Blob Storage]
