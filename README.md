@@ -17,6 +17,8 @@ question answering in a secure, enterprise-ready system.
 
 ## Key Features
 - Azure AD (Entra ID) authentication and role-based access
+- Search interface with client-aware filtering
+- Mock retrival backend for local development and testing
 - Client-aware document ingestion
 - Semantic and vector search using Azure Cognitive Search
 - AI-powered answers using Azure OpenAI (RAG)
@@ -25,6 +27,13 @@ question answering in a secure, enterprise-ready system.
 
 ## Architecture
 (Architecture diagram coming soon)
+
+## Local Development Mode
+For local development, the application supports a mock search backend
+that simulates Azure Cognitive Search. This allows ingestion and retrieval
+to be tested without requiring Azure resources.
+
+The backend can be switched via environment configuration.
 
 ## Tech Stack
 - Python / Flask
