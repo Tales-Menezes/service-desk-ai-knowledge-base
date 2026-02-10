@@ -6,3 +6,7 @@ services:
       - .env
     ports:
       - "5000:5000"
+    volumes:
+      - mock_data:/tmp
+volumes:
+  mock_data:
