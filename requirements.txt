@@ -1,0 +1,7 @@
+flask
+python-dotenv
+azure-storage-blob
+azure-search-documents
+PyPDF2
+python-docx
+tiktoken
