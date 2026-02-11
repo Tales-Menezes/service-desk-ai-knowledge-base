@@ -12,3 +12,8 @@ variable "environment" {
   type    = string
   default = "ephemeral"
 }
+
+variable "subscription_id" {
+  type        = string
+  description = "Azure subscription ID used by Terraform"
+}

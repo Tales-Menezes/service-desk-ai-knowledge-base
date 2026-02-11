@@ -1,13 +1,33 @@
-# Environment
-.env
-.venv/
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+terraform/terraform.tfvars
+terraform/*.tfvars
+
+# Azure
+*.azure
 
 # Python
 __pycache__/
 *.pyc
+
+# Environment
+.env
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Test documents
 test_docs/
 
 # Docker / temp
 /tmp/
+

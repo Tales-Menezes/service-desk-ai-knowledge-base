@@ -14,3 +14,7 @@ output "resource_group_name" {
 output "storage_account_name" {
   value = azurerm_storage_account.sa.name
 }
+
+output "search_index_name" {
+  value = "knowledge-base-index"
+}

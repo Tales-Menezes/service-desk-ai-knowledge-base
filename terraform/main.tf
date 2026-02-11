@@ -7,9 +7,11 @@ resource "random_string" "suffix" {
 locals {
   name_suffix = random_string.suffix.result
   rg_name     = "${var.project_name}-${var.environment}-rg-${local.name_suffix}"
-  search_name = "${var.project_name}-${var.environment}-srch-${local.name_suffix}"
-  sa_name     = replace("${var.project_name}${var.environment}${local.name_suffix}", "-", "")
+  search_name = lower("${var.project_name}-${var.environment}-srch-${local.name_suffix}")
+  raw_sa      = lower("${var.project_name}${var.environment}${local.name_suffix}")
+  sa_name     = substr(join("", regexall("[a-z0-9]", local.raw_sa)), 0, 24)
 }
+
 
 resource "azurerm_resource_group" "rg" {
   name     = local.rg_name
@@ -31,6 +33,7 @@ resource "azurerm_search_service" "search" {
     project     = var.project_name
     environment = var.environment
     owner       = "tales"
+    purpose     = "portfolio"
     ttl         = "ephemeral"
   }
 }
@@ -53,6 +56,6 @@ resource "azurerm_storage_account" "sa" {
 
 resource "azurerm_storage_container" "kb" {
   name                  = "kb-docs"
-  storage_account_id  = azurerm_storage_account.sa.id
+  storage_account_name    = azurerm_storage_account.sa.name
   container_access_type = "private"
 }
