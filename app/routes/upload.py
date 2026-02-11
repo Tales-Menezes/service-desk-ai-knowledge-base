@@ -8,6 +8,11 @@ upload_bp = Blueprint("upload", __name__)
 @upload_bp.route("/upload", methods=["POST"])
 
 def upload():
+    allowed = {".pdf", ".docx", ".txt", ".md"}
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in allowed:
+        return "Unsupported file type", 400
+    
     file = request.files["file"]
     client = request.form["client"]
     category = request.form["category"]

@@ -1,19 +1,20 @@
+import os
 from PyPDF2 import PdfReader
 from docx import Document
 
-# Simple text extraction service that supports PDF, DOCX, TXT, and MD files.
 def extract_text(file_path: str) -> str:
+    ext = os.path.splitext(file_path)[1].lower()
 
-    if file_path.endswith(".pdf"):
+    if ext == ".pdf":
         reader = PdfReader(file_path)
         return "\n".join(page.extract_text() or "" for page in reader.pages)
 
-    if file_path.endswith(".docx"):
+    if ext == ".docx":
         doc = Document(file_path)
         return "\n".join(p.text for p in doc.paragraphs)
-    
-    if file_path.endswith(".txt") or file_path.endswith(".md"):
-        with open(file_path, "r", encoding="utf-8") as f:
+
+    if ext in {".txt", ".md"}:
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
             return f.read()
-        
-    raise ValueError("Unsupported file type")
+
+    raise ValueError(f"Unsupported file type: {ext}")
