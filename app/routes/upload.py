@@ -5,8 +5,8 @@ from app.services.search_index_service import SearchIndexService
 from app.services.search_service_factory import get_search_service
 
 upload_bp = Blueprint("upload", __name__)
-
 @upload_bp.route("/upload", methods=["POST"])
+
 def upload():
     file = request.files["file"]
     client = request.form["client"]

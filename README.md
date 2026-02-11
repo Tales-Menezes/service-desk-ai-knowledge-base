@@ -18,6 +18,7 @@ question answering in a secure, enterprise-ready system.
 ## Key Features
 - Azure AD (Entra ID) authentication and role-based access
 - Search interface with client-aware filtering
+- Supports PDF, DOCX, TXT, and Markdown (.md) documents
 - Mock retrival backend for local development and testing
 - Client-aware document ingestion
 - Semantic and vector search using Azure Cognitive Search
