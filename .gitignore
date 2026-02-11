@@ -1,6 +1,7 @@
 # Terraform
 .terraform/
 *.tfstate
+*.tfplan
 *.tfstate.*
 crash.log
 override.tf
@@ -17,8 +18,14 @@ terraform/*.tfvars
 __pycache__/
 *.pyc
 
+# Python tooling
+.pytest_cache/
+.coverage
+htmlcov/
+
 # Environment
-.env
+.env.*
+!.env.example
 .venv/
 
 # OS
