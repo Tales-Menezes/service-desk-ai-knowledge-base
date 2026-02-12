@@ -38,3 +38,5 @@ test_docs/
 # Docker / temp
 /tmp/
 
+# scripts
+scripts/
