@@ -1,7 +1,7 @@
 import os
 
 def get_search_service():
-    backend = os.getenv("SEARCH_BACKEND", "azure").lower()
+    backend = os.getenv("SEARCH_BACKEND", "mock").lower()
 
     if backend == "mock":
         from app.services.mock_search_index_service import MockSearchIndexService

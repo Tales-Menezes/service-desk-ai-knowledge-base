@@ -1,5 +1,6 @@
 import json
 import os
+import tempfile
 from pathlib import Path
 from typing import List, Dict, Any
 
@@ -9,8 +10,9 @@ class MockSearchIndexService:
     Stores uploaded chunks to a JSON file so we can test ingestion end-to-end.
     """
 
-    def __init__(self, storage_path: str = "/tmp/mock_index.json"):
-        self.storage_path = storage_path
+    def __init__(self, storage_path: str | None = None ):
+        default_path = Path(os.getenv("APP_TEMP_DIR", tempfile.gettempdir())) / "mock_index.json"
+        self.storage_path = str(storage_path or default_path)
 
     def upload_chunks(self, documents: List[Dict[str, Any]]) -> None:
         existing = []

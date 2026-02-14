@@ -5,3 +5,4 @@ azure-search-documents
 PyPDF2
 python-docx
 tiktoken
+openai

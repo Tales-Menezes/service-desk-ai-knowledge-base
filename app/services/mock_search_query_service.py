@@ -1,10 +1,12 @@
 import json
 import os
+import tempfile
 from typing import List, Dict, Any
 
 class MockSearchQueryService:
-    def __init__(self, storage_path: str = "/tmp/mock_index.json"):
-        self.storage_path = storage_path
+    def __init__(self, storage_path: str | None = None):
+        default_path = Path(os.getenv("APP_TEMP_DIR", tempfile.gettempdir())) / "mock_index.json"        
+        self.storage_path = str(storage_path or default_path)
     
     def search(self, query: str, client: str = None, top: int = 5) -> List[Dict[str, Any]]:
         if not os.path.exists(self.storage_path):
